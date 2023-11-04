@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="/assests/style.css">
+    <script src="https://kit.fontawesome.com/7de464b263.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <audio id="song" >
+            <source src="/assests/videoplayback.m4a" type="audio/mpeg">
+        </audio>
+        <div id="playerarea">
+
+            <div id="header">
+            <div class="circle"><i class="fa-solid fa-arrow-left"></i></div>
+            <h3>Playing now</h3>
+            <div class="circle"><i class="fa-solid fa-ellipsis"></i></div>
+            </div>
+
+            <div id="playerimg">
+                <div id="imagebox"></div>
+            </div>
+
+            <div id="songdetails">
+                <h4>Photograph</h4>
+                <p>Ed Sheran</p>
+            </div>
+
+            <div id="playerbuttons">
+                <div id="slider">
+                    <input type="range" name="musicslider" id="sliderline">
+                </div>
+
+                <div id="buttons">
+                    <div class="circle"><i class="fa-solid fa-backward"></i></div>
+                    <div class="circle"><i class="fa-solid fa-pause" id="playctrl"></i></div>
+                    <div class="circle"><i class="fa-solid fa-forward"></i></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="/assests/script.js"></script>
+</html>
