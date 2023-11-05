@@ -82,11 +82,16 @@ html,body{
     cursor: pointer;
     filter: drop-shadow(5px 5px 10px #171717);
 }
+.circle i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 #playerimg #imagebox{
     width: 100%;
     height: 250px;
-    background-image: url(/assests/ed\ sheeran.jpg);
+    background-image: url(/assests/ed.jpg);
     background-position: center;
     background-size: cover;
     border-radius: 15px;
