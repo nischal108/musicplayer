@@ -65,7 +65,7 @@ song.onloadedmetadata = function () {
 // pause and play song feature
 
 playctrl.onclick = function(){
-    if(playctrl.classList.contains("fa-play")){
+    if(playctrl.classList.contains("fa-pause")){
         song.pause();
         playctrl.classList.remove("fa-pause");
         playctrl.classList.add("fa-play");
@@ -135,4 +135,30 @@ function songDetailsChange(i){
 }
 
 
-//
+// song list area next area where songs are listed
+
+var imagebox2 = document.getElementById("imagebox2");
+var songname2 = document.getElementById("songname2");
+var ul = document.getElementById("ul");
+var li = document.createElement("li");
+// var codetoinject = document.createTextNode('<div id="miniimageicon"></div><div id="songdetailslist"><h5>Photograph</h5><p>Ed Sheran</p></div><div class="circle"><i class="fa-solid fa-play" id="playctrlicon1"></i></div>');
+
+for (var i = 0; i < 4; i++) {
+    var li = document.createElement("li");
+    var codetoinject = '<div id="miniimageicon"></div><div id="songdetailslist"><h5>' +musics[i].Name +'</h5><p>' +musics[i].Singer+'</p></div><div class="circle"><i class="fa-solid fa-play" id="playctrlicon1"></i></div>';
+    li.innerHTML = codetoinject;
+    ul.appendChild(li);
+     // var miniimgbox= document.getElementById("minimageicon");
+   // miniimgbox.style.backgroundImage = musics[i].bgimg;
+}
+
+function listGenerator (){
+    for (var i = 0; i < 4; i++) {
+        var li = document.createElement("li");
+        var codetoinject = '<div id="miniimageicon"></div><div id="songdetailslist"><h5>' +musics[i].Name +'</h5><p>' +musics[i].Singer+'</p></div><div class="circle"><i class="fa-solid fa-play" id="playctrlicon1"></i></div>';
+        li.innerHTML = codetoinject;
+        ul.appendChild(li);
+         // var miniimgbox= document.getElementById("minimageicon");
+       // miniimgbox.style.backgroundImage = musics[i].bgimg;
+    }
+}
