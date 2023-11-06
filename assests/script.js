@@ -12,6 +12,13 @@ const songName = document.getElementById("songname");
 const singerName = document.getElementById("singer");
 
 
+// song list area next area where songs are listed
+
+var imagebox2 = document.getElementById("imagebox2");
+var songname2 = document.getElementById("songname2");
+var ul = document.getElementById("ul");
+var li = document.createElement("li");
+
 
 // lists of the details and url of musics to be played 
 
@@ -129,18 +136,15 @@ function Songrev(i){
 function songDetailsChange(i){
     song.src = musics[i].location;
     bgimgframe.style.backgroundImage = musics[i].bgimg;
+    imagebox2.style.backgroundImage = musics[i].bgimg;
     songName.innerHTML = musics[i].Name;
+    songname2.innerHTML = musics[i].Name;
     singerName.innerHTML = musics[i].Singer;
     song.play();
 }
 
 
-// song list area next area where songs are listed
 
-var imagebox2 = document.getElementById("imagebox2");
-var songname2 = document.getElementById("songname2");
-var ul = document.getElementById("ul");
-var li = document.createElement("li");
 // var codetoinject = document.createTextNode('<div id="miniimageicon"></div><div id="songdetailslist"><h5>Photograph</h5><p>Ed Sheran</p></div><div class="circle"><i class="fa-solid fa-play" id="playctrlicon1"></i></div>');
 
 for (var i = 0; i < 4; i++) {
