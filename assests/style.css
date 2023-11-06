@@ -23,6 +23,7 @@ html,body{
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 3vw;
 
 }
 
@@ -153,4 +154,19 @@ html,body{
     transform: scale(1.5);
     font-size: 20px;
     background-color: #07b9ff;
+}
+
+#listarea{
+    width: 340px;
+    height: 580px;
+    background-color: #32373C;
+    filter: drop-shadow(5px 5px 10px #000000);
+    border-radius: 15px;
+}
+
+@media (max-width: 600px) {
+    #wrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
 }

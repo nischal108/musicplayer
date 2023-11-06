@@ -65,7 +65,7 @@ song.onloadedmetadata = function () {
 // pause and play song feature
 
 playctrl.onclick = function(){
-    if(playctrl.classList.contains("fa-pause")){
+    if(playctrl.classList.contains("fa-play")){
         song.pause();
         playctrl.classList.remove("fa-pause");
         playctrl.classList.add("fa-play");
@@ -78,13 +78,15 @@ playctrl.onclick = function(){
 }
 
 
-// slider should move when song plays 
+// slider should move when song plays  and next song to be played when previous ones finishes playing
 
-if(song.played){
-    setInterval(()=>{
+if (!song.paused) {
+    setInterval(() => {
         slider.value = song.currentTime;
-    },500);
-    
+        if (song.currentTime >= song.duration) {
+            forwardsong.click();
+        }
+    }, 500);
 }
 
 
@@ -100,7 +102,7 @@ slider.onchange = function(){
 // forward and backward feature to change the song and oher details associated with song 
 
 let currentSongIndex = 0; 
-forwardsong.addEventListener("click", function() {
+forwardsong.addEventListener("click", function forwardthesong() {
     currentSongIndex = Songfw(currentSongIndex);
     songDetailsChange(currentSongIndex);
 });
