@@ -88,6 +88,7 @@ if (!song.paused) {
             forwardsong.click();
         }
     }, 500);
+    
 }
 
 
