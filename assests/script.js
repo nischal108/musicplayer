@@ -226,25 +226,23 @@ listGenerator();
 
 
 // what if the user chnages songs from the player are then the list item song also shows which song is being played in the main area through the described qualities 
-
-
 function updateListItem(index) {
     var listItems = document.querySelectorAll('.song-list-item');
-    var currentListItem = listItems[index];
-    var playButton = currentListItem.querySelector('.playbutton');
-    var playCircle = playButton.parentElement; // Get the parent element of the play button
 
-    listItems.forEach(function(item) {
-        item.style.backgroundColor = '';
+    listItems.forEach(function(item, i) {
+        var playButton = item.querySelector('.playbutton');
+        var playCircle = playButton.parentElement;
+
+        if (i === index) {
+            item.style.backgroundColor = '#151618';
+            playButton.classList.remove("fa-play");
+            playButton.classList.add("fa-pause");
+            playCircle.style.backgroundColor = '#07b9ff';
+        } else {
+            item.style.backgroundColor = '';
+            playButton.classList.remove("fa-pause");
+            playButton.classList.add("fa-play");
+            playCircle.style.backgroundColor = '';
+        }
     });
-
-    currentListItem.style.backgroundColor = '#151618';
-
-    playButton.classList.remove("fa-play");
-    playButton.classList.add("fa-pause");
-    document.querySelectorAll('.circle').forEach(function(circle) {
-        circle.style.backgroundColor = '';
-    });
-
-    playCircle.style.backgroundColor = '#07b9ff';
 }
