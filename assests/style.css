@@ -248,7 +248,7 @@ html,body{
     justify-content: space-between;
     margin-bottom: 13px;
 }
-#miniimageicon{
+.miniimageicon{
     width: 45px;
     height: 40px;
     background-image: url(/assests/ed.jpg);
@@ -257,6 +257,7 @@ html,body{
     border-radius: 8px;
     filter: drop-shadow(5px 5px 10px #171717);
 }
+
 
 
 #songdetailslist h5{

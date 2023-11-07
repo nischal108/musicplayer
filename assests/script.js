@@ -47,12 +47,6 @@ let musics = [
         location: "/assests/Flirty Maya  Official Music Video  Neetesh Jung Kunwar.mp3",
         bgimg: "url(/assests/njk.jpg)"
     },
-    {
-        Name: "Castle On The Hill",
-        Singer: "Ed Sheran",
-        location: "/assests/Ed Sheeran - Castle On The Hill [Official Music Video].mp3",
-        bgimg: "url(/assests/edsheeran1.jpg)"
-    }
 ];
 
 
@@ -112,12 +106,16 @@ let currentSongIndex = 0;
 forwardsong.addEventListener("click", function forwardthesong() {
     currentSongIndex = Songfw(currentSongIndex);
     songDetailsChange(currentSongIndex);
+    updateListItem(currentSongIndex);
 });
+
 backward.addEventListener("click", function() {
     currentSongIndex = Songrev(currentSongIndex);
     songDetailsChange(currentSongIndex);
+    updateListItem(currentSongIndex);
 });
 
+//fowarding songs and reversing songs 
 function Songfw(i){
     if(i >= musics.length - 1){
         return 0;
@@ -133,6 +131,8 @@ function Songrev(i){
     }
 }
 
+
+// chnaging all the thinga that needs to be chnaged on playing a music inside a player
 function songDetailsChange(i){
     song.src = musics[i].location;
     bgimgframe.style.backgroundImage = musics[i].bgimg;
@@ -145,24 +145,106 @@ function songDetailsChange(i){
 
 
 
-// var codetoinject = document.createTextNode('<div id="miniimageicon"></div><div id="songdetailslist"><h5>Photograph</h5><p>Ed Sheran</p></div><div class="circle"><i class="fa-solid fa-play" id="playctrlicon1"></i></div>');
 
-for (var i = 0; i < 4; i++) {
-    var li = document.createElement("li");
-    var codetoinject = '<div id="miniimageicon"></div><div id="songdetailslist"><h5>' +musics[i].Name +'</h5><p>' +musics[i].Singer+'</p></div><div class="circle"><i class="fa-solid fa-play" id="playctrlicon1"></i></div>';
-    li.innerHTML = codetoinject;
-    ul.appendChild(li);
-     // var miniimgbox= document.getElementById("minimageicon");
-   // miniimgbox.style.backgroundImage = musics[i].bgimg;
-}
 
-function listGenerator (){
+
+
+// music lists 
+
+
+// generating lists items according to the music array and the details of the songs iside it 
+
+function listGenerator() {
     for (var i = 0; i < 4; i++) {
         var li = document.createElement("li");
-        var codetoinject = '<div id="miniimageicon"></div><div id="songdetailslist"><h5>' +musics[i].Name +'</h5><p>' +musics[i].Singer+'</p></div><div class="circle"><i class="fa-solid fa-play" id="playctrlicon1"></i></div>';
+        li.classList.add('song-list-item'); 
+        var codetoinject = '<div class="miniimageicon miniimag'+i+'"></div><div id="songdetailslist"><h5>' +musics[i].Name +'</h5><p>' +musics[i].Singer+'</p></div><div class="circle"><i class="fa-solid fa-play playbutton" id="playbutton'+i+'"></i></div>';
         li.innerHTML = codetoinject;
         ul.appendChild(li);
-         // var miniimgbox= document.getElementById("minimageicon");
-       // miniimgbox.style.backgroundImage = musics[i].bgimg;
+
+        var playButton = document.getElementById('playbutton'+i);
+
+        playButton.addEventListener('click', function() {
+            var index = parseInt(this.id.split('playbutton')[1]);
+            playPauseSong(index);
+        });
+
+        var miniimag = document.querySelector('.miniimag'+i);
+        miniimag.style.backgroundImage =  musics[i].bgimg;
     }
+}
+
+
+// function that allows user to play or pause song using the play and pause button near the song name in list are and change the qualities if the song is being played currently
+function playPauseSong(index) {
+    var listItems = document.querySelectorAll('.song-list-item');
+    var currentListItem = listItems[index];
+    var playButton = document.getElementById('playbutton' + index);
+    var playCircle = playButton.parentElement; 
+    if (index === currentSongIndex && !song.paused) {
+        song.pause();
+        playctrl.classList.remove("fa-pause");
+        playctrl.classList.add("fa-play");
+        currentListItem.style.backgroundColor = '';
+        playButton.classList.remove("fa-pause");
+        playButton.classList.add("fa-play");
+        playCircle.style.backgroundColor = ''; 
+    } else {
+        currentSongIndex = index;
+        songDetailsChange(currentSongIndex);
+        song.play();
+        playctrl.classList.remove("fa-play");
+        playctrl.classList.add("fa-pause");
+
+        listItems.forEach(function(item) {
+            item.style.backgroundColor = '';
+        });
+
+        currentListItem.style.backgroundColor = '#151618';
+
+        document.querySelectorAll('.playbutton').forEach(function(button) {
+            button.classList.remove("fa-pause");
+            button.classList.add("fa-play");
+        });
+
+        playButton.classList.remove("fa-play");
+        playButton.classList.add("fa-pause");
+
+        // Resetting play circle background color
+        document.querySelectorAll('.circle').forEach(function(circle) {
+            circle.style.backgroundColor = '';
+        });
+
+        playCircle.style.backgroundColor = '#07b9ff'; 
+    }
+}
+
+listGenerator();
+
+
+
+
+
+// what if the user chnages songs from the player are then the list item song also shows which song is being played in the main area through the described qualities 
+
+
+function updateListItem(index) {
+    var listItems = document.querySelectorAll('.song-list-item');
+    var currentListItem = listItems[index];
+    var playButton = currentListItem.querySelector('.playbutton');
+    var playCircle = playButton.parentElement; // Get the parent element of the play button
+
+    listItems.forEach(function(item) {
+        item.style.backgroundColor = '';
+    });
+
+    currentListItem.style.backgroundColor = '#151618';
+
+    playButton.classList.remove("fa-play");
+    playButton.classList.add("fa-pause");
+    document.querySelectorAll('.circle').forEach(function(circle) {
+        circle.style.backgroundColor = '';
+    });
+
+    playCircle.style.backgroundColor = '#07b9ff';
 }
