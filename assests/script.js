@@ -32,20 +32,20 @@ let musics = [
     {
         Name: "Tali Bajaideu Nepali",
         Singer: "unknown",
-        location: "/assests/Tali Bajai Deu... Nepali T20 World cup song.mp3",
-        bgimg: "url(/assests/cricket.jpeg)"
+        location: "/assests/Tali.mp3",
+        bgimg: "url(assests/cricket.jpeg)"
     },
     {
         Name: "Uran",
         Singer: "Raffey - Usama",
-        location: "/assests/Uraan - TU HAI KAHAN - Raffey - Usama - Ahad (Official Music Video).mp3",
-        bgimg: "url(/assests/breakup.jpg)"
+        location: "/assests/Uraan.mp3",
+        bgimg: "url(assests/breakup.jpg)"
     },
     {
         Name: "Flirty Maya",
         Singer: "Nitesh Jung Kunwar",
-        location: "/assests/Flirty Maya  Official Music Video  Neetesh Jung Kunwar.mp3",
-        bgimg: "url(/assests/njk.jpg)"
+        location: "/assests/Flirty.mp3",
+        bgimg: "url(assests/njk.jpg)"
     },
 ];
 
